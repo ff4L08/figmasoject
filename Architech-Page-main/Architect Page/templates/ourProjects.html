@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/home.css">
+    <title>Our Projects</title>
+</head>
+
+<body>
+    <nav>
+        <img src="../static/images/images1.png" width="50px" height="50px">
+        <a href="#" class="thispage">MAIN</a>
+        <a href="#">GALLERY</a>
+        <a href="#">PROJECTS</a>
+        <a href="#">CERTIFICATIONS</a>
+        <a href="#">CONTACT</a>
+    </nav>
+    <main>
+        <div>
+            <h1 class="roboto-light" style="padding-left: 135px; padding-top:85px; font-size: 64px;">Our</h1>
+            <h2 class="roboto-bold" style="padding-left: 135px; padding-top: 3px; width: 239px; font-size: 64px;">
+                Projects</h2>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <img src="../static/images/line.png" alt="line"
+                style="align-self: center; height: 2px; width: 1650px; margin-top: 35px;">
+        </div>
+
+        {% for row in rows%}
+        <div style="display: flex; padding-top: 50px; width: 86%; padding-left: 135px;">
+            <div style="display: flex; width: 60%; height: 15%;">
+                <img src={{row['image']}} alt="image"
+                    style="align-self: center; width: 100%; object-fit: cover; height: 600px;">
+            </div>
+            <div
+                style="display: flex; flex-direction: column; width: 500px; padding-left: 50px; background-color: #FBFBFB; width: 40%;">
+                <h1 class="roboto-light" style=" padding-top:50px; font-size: 50px; font-weight: 200;">{{row['title']}}
+                </h1>
+                <p class="roboto-light"
+                    style="font-size: 20px; font-weight: 200; line-height: 25px; padding-top: 100px; color: #000000;">
+                    {{row['description']}}
+                </p>
+                <button href="#"
+                    style="background-color: #ffffff; margin-top: 150px; border: none; width: 200px; height: 80px; display: inline-block;">Read
+                    More <img src="../static/images/ico-shape.png"></button>
+            </div>
+        </div>
+        {% endfor %}
+
+        <div style="margin-top: 100px; margin-bottom: 100px; display: flex;">
+            {% if ourProjectCurrentPage %}
+            {% if ourProjectMaxPage %}
+            <p style="margin-left:130px; font-size: 50px; margin-right: 50px;">{{ourProjectCurrentPage}} / {{ourProjectMaxPage}}</p>
+            {% endif %}
+            {% endif %}
+            <form action="/change/DEC" method="post">
+                <button
+                    style="height: 50px; width: 50px; background-color: #FFFFFF; border-color: #F2F2F2; border-radius: 1px; box-shadow: none; margin-left: 50px;">←</button>
+            </form>
+            <form action="/change/INC" method="post">
+                <button
+                    style="height: 50px; width: 50px; background-color: #FFFFFF; border-color: #F2F2F2; border-radius: 1px; margin-left: 13px; box-shadow: none;">→</button>
+            </form>
+        </div>
+
+        <footer style="
+    display: flex; 
+    flex-direction: row; 
+    background-color: #2c2c2c; 
+    justify-content: space-around;
+    padding-left: 116px;
+    padding: 58px;">
+            <div><img src="../static/images/website_logo_footer.png" alt="image"></div>
+            <div style="display: flex; flex-direction: column;">
+                <p class="roboto-bold" style="color: #ffffff; font-size: 16px;">Information</p>
+                <a href="#" class="roboto-medium"
+                    style="color: #ffffff; font-size: 14px; text-decoration: none;">Main</a>
+                <a href="#" class="roboto-medium"
+                    style="color: #ffffff; font-size: 14px; text-decoration: none">Gallery</a>
+                <a href="#" class="roboto-medium"
+                    style="color: #ffffff; font-size: 14px; text-decoration: none">Projects</a>
+                <a href="#" class="roboto-medium"
+                    style="color: #ffffff; font-size: 14px; text-decoration: none">Certifications</a>
+                <a href="#" class="roboto-medium"
+                    style="color: #ffffff; font-size: 14px; text-decoration: none">Contacts</a>
+            </div>
+            <div>
+                <p class="roboto-bold" style="color: #ffffff; font-size: 16px;">Contacts</p>
+                <div style="display: flex; flex-direction: row;">
+                    <img src="../static/images/Vector.png">
+                    <p class="roboto-medium" style="color: #ffffff; font-size: 14px;">1234 Sample Street
+                        Austin Texas 78704</p>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <img src="../static/images/Group.png">
+                    <p class="roboto-medium" style="color: #ffffff; font-size: 14px;">512.333.2222</p>
+                </div>
+                <div style="display: flex; flex-direction: row;">
+                    <img src="../static/images/Group (1).png">
+                    <p class="roboto-medium" style="color: #ffffff; font-size: 14px;">sampleemail@gmail.com</p>
+                </div>
+            </div>
+            <div>
+                <p class="roboto-bold" style="color: #ffffff; font-size: 16px;">Social Media</p>
+                <div>
+                    <img src="../static/images/facebook.png">
+                    <img src="../static/images/twitter.png">
+                    <img src="../static/images/Linked In.png">
+                    <img src="../static/images/pininterest.png">
+                </div>
+            </div>
+        </footer>
+    </main>
+</body>
+
+</html>
