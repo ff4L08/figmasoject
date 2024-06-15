@@ -9,22 +9,31 @@
 <body>
     <nav>
         <img src="../static/images/images1.png" width="50px" height="50px">
-        <a href="./HomePage.html">MAIN</a>
-        <a href="#">GALLERY</a>
-        <a href="#">PROJECTS</a>
-        <a href="#">CERTIFICATIONS</a>
-        <a href="#">CONTACTS</a>
-    </nav>
+        <a href="{{url_for('Homescreen')}}" class="nav">MAIN</a>
+        <a href="{{url_for('GalleryPage', currentPage = 1)}}">GALLERY</a>
+        <a href="{{url_for('OurProjects', currentPage = 1)}}" class="thispage">PROJECTS</a>
+        <a href="{{url_for('contactPage')}}">CONTACTS</a>
+    </nav>  
 
     <main>
         <div style="display: flex; flex-direction: column; margin-top: 63px; margin-left: 135px;">
             <h1 class="roboto-light" style="font-size: 64px; color: #bdbdbd;">Sample</h1>
-            <h1 class="roboto-bold" style="font-size: 64px; color: #333333;">Project 1</h1>
+            <h1 class="roboto-bold" style="font-size: 64px; color: #333333; margin-bottom: 30px;">Project 1</h1>
         </div>
-        <div style="height: 1px; width: 1170px; background-color: #f2f2f2;"></div>
+        <div style="height: 1px; width: 1170px; background-color: #f2f2f2; margin-bottom: 30px;"></div>
+
+        {% if images %}
         <div>
-            <img src="../static/images/image 33.png" style="width: 1170;">
+            <img src="{{images['image1']}}" style="width: 100%; height:435px; object-fit: cover; margin-bottom: 30px;">
+            <div style="display: flex; margin-bottom: 30px; width: 100%;">
+                <img src="{{images['image1']}}" style="flex:1;"/>
+                {% if projects %}
+                <p style="flex:3;">{{projects.description}}</p>
+                {% endif %}
+            </div>
+                <img src = "{{images['image3']}}" style="width: 100%; height:435px;" />
         </div>
+        {% endif %}
     </main>
 
     <footer style="
@@ -39,11 +48,10 @@
         <div><img src="../static/images/images1.png"></div>
         <div style="display: flex; flex-direction: column; gap: 16px;">
             <p class="roboto-bold" style="color: #ffffff; font-size: 16px;">Information</p>
-            <a href="#" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none;">Main</a>
-            <a href="#" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Gallery</a>
-            <a href="#" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Projects</a>
-            <a href="#" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Certifications</a>
-            <a href="#" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Contacts</a>
+            <a href="{{url_for('Homescreen')}}" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none;">Main</a>
+            <a href="{{url_for('GalleryPage', currentPage = 1)}}" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Gallery</a>
+            <a href="{{url_for('OurProjects', currentPage = 1)}}" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Projects</a>
+            <a href="{{url_for('contactPage')}}" class="roboto-medium" style="color: #ffffff; font-size: 14px; text-decoration: none">Contacts</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 32px;">
             <p class="roboto-bold" style="color: #ffffff; font-size: 16px;">Contacts</p>
